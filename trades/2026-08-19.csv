@@ -1,0 +1,2 @@
+date,time_et,symbol,side,qty,price,order_type,fees,realized_pnl,thesis,catalyst,exit_reason
+2026-08-19,10:56,BBWI,sell,24,20.35,stop_market,0,7.47,,,上调后止损触发:早间routine将止损$19.10上调至$20.35(成本$20.04上方锁盈),23分钟后回落触发,成交价=止损价零滑点

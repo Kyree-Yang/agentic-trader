@@ -1,0 +1,2 @@
+date,time_et,symbol,side,qty,price,order_type,fees,realized_pnl,thesis,catalyst,exit_reason
+2026-08-24,13:47,BJ,sell,5,98.89,stop_market,0,16.25,,,追踪止损第三级$98.95(+3.5%)于13:47触发,成交$98.89,滑点-0.06/股(-0.06%);当日止损三连拖$94.55→96.60→97.85→98.95,日高$100.17(11:33)后回落触发;收盘$98.49低于成交价

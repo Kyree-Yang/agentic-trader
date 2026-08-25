@@ -1,0 +1,5 @@
+date,time_et,symbol,side,qty,price,order_type,fees,realized_pnl,thesis,catalyst,exit_reason
+2026-08-18,09:30,LUNR,sell,24,19.28,stop_market,0,-27.33,,,隔夜跳空低开触发止损(止损价19.45,实际成交19.28,滑点-0.17/股)
+2026-08-18,10:33,AS,buy,14,34.0743,limit,0,,财报gap-and-go:+4.2% gap横盘一小时higher lows,大盘-1.4%下相对强度突出,Q2 EPS 0.22 vs 0.11 beat+上调全年指引,
+2026-08-18,11:21,AS,sell,14,33.29,stop_market,0,-10.98,,,止损触发:-2.3%贴身结构位止损(当日低点33.36下方)被财报日午盘噪音打掉
+2026-08-18,11:34,BBWI,buy,24,20.0387,limit,0,,+5.9% gap动量(catalyst见云端12:31报告),,
