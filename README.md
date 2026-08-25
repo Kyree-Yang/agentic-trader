@@ -14,19 +14,21 @@
 | 风控纪律违规 | **0** |
 | 叙事弧线 | 前 2 日亏损交学费 → 教训回流 prompt → 后 5 个交易日连续 5 笔盈利平仓 |
 
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/equity-dark.png">
+  <img src="docs/equity-light.png" width="960" alt="Campaign #1 逐小时账户净值曲线:8/18 探底 $954 后连续回升,8/25 突破 $1,050 目标线收于 $1,054;七次平仓事件(含两笔亏损)标注在曲线上。">
+</picture>
+
+*净值曲线由成交台账 + 持仓时段小时级行情逐点重建,期末与券商实际余额误差 $0.01;两笔亏损(LUNR、AS)与七次离场全部标注——包括不好看的部分。*
+
 ⚠️ **诚实声明**:7 笔样本没有统计效力(71% 胜率的 95% 置信区间约为 29%–96%),策略未经历趋势市或崩盘日。这份记录的价值在于**方法论与过程**,不在于收益数字。
 
 ## 系统架构
 
-```
-盘前 9:20 ET          9:31–15:30 每小时 + 10:01     15:55            收盘后(本地)
-┌──────────────┐      ┌──────────────────────┐   ┌────────────┐   ┌──────────────┐
-│ Premarket    │ 候选股│ Trader + 10:01 入场窗  │   │ Close Check │   │ Daily Review │
-│ Review       │─────▶│ (唯一有下单权)         │──▶│ 隔夜决策专职 │──▶│ headless 复盘 │
-│ 只调研不下单   │ 经由  │ bear-case veto 后下单  │   │ 禁开新仓     │   │ 只读,写日志   │
-└──────────────┘ 券商  └──────────────────────┘   └────────────┘   └──────────────┘
-                 watchlist 交接(跨 session 的"共享记忆")
-```
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/architecture-dark.png">
+  <img src="docs/architecture-light.png" width="960" alt="四个 Claude routine 以券商账户为共享状态协作:盘前研究写入 watchlist,盘中交易员独占下单权,收盘检查专职隔夜决策,本地复盘写日志;教训每周回流进 routine prompt 形成学习闭环。">
+</picture>
 
 - **4 个云端 Claude Code routine**(prompt 全文见 `system/`),每个是独立无记忆的 session,通过券商 watchlist 和账户状态交接
 - **教训回流**:实亏教训 → `lessons/PLAYBOOK.md`(规则分 [验证]/[假设]/[废弃] 三档)→ 回写云端 prompt(FinMem 分层记忆思想)
